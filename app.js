@@ -1,12 +1,11 @@
-const wmf = document.querySelector('#book-list li:nth-child(2) .name');
-// console.log(wmf);
+var books = document.querySelectorAll('#book-list li .name');
 
-//This querySelector only ever returns one element even if there are more than one.
-//It'll retrun the fist.
-var books = document.querySelector('#book-list li .name');
-// console.log(books);
+//Update or change text content of HTML element.
+Array.from(books).forEach(function (book) {
+    book.textContent += ' (Book Title)';
+});
 
-//The querySelectorAll would return a collection of elements.
-books = document.querySelectorAll('#book-list li .name');
-
-console.log(books);
+// Update or change HTML element.
+const booklist = document.querySelector('#book-list');
+booklist.innerHTML = '<h2>Books and more books</h2>';
+booklist.innerHTML += '<p>This is how you add HTML</p>';
