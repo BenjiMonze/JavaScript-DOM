@@ -1,11 +1,11 @@
-var books = document.querySelectorAll('#book-list li .name');
+const banner = document.querySelector('#page-banner');
 
-//Update or change text content of HTML element.
-Array.from(books).forEach(function (book) {
-    book.textContent += ' (Book Title)';
-});
+console.log('#page-banner node type is:', banner.nodeType);
+console.log('#page-banner node name is:', banner.nodeName);
+console.log('#page-banner node has child nodes:', banner.hasChildNodes());
 
-// Update or change HTML element.
-const booklist = document.querySelector('#book-list');
-booklist.innerHTML = '<h2>Books and more books</h2>';
-booklist.innerHTML += '<p>This is how you add HTML</p>';
+const clonedBanner = banner.cloneNode(true);
+//If you don't pass in true, it won't give all the nested elements in the cloned element.
+//const clonedBanner = banner.cloneNode(false);
+
+console.log(clonedBanner);
