@@ -1,11 +1,9 @@
-const banner = document.querySelector("#page-banner");
+const bookList = document.querySelector("#book-list");
 
-console.log("#page-banner node type is:", banner.nodeType);
-console.log("#page-banner node name is:", banner.nodeName);
-console.log("#page-banner node has child nodes:", banner.hasChildNodes());
+console.log("book-lsit next sibling is:", bookList.nextSibling);
+console.log("book-lsit next element sibling is:", bookList.nextElementSibling);
 
-const clonedBanner = banner.cloneNode(true);
-//If you don't pass in true, it won't give all the nested elements in the cloned element.
-//const clonedBanner = banner.cloneNode(false);
+console.log("book-lsit previoius sibling is:", bookList.previousSibling);
+console.log("book-lsit previoius element sibling is:", bookList.previousElementSibling);
 
-console.log(clonedBanner);
+bookList.previousElementSibling.querySelector('p').innerHTML += '<br />Too cool for everyone else';
