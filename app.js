@@ -1,9 +1,45 @@
-const bookList = document.querySelector("#book-list");
+const list = document.querySelector("#book-list ul");
+const forms = document.forms;
 
-console.log("book-lsit next sibling is:", bookList.nextSibling);
-console.log("book-lsit next element sibling is:", bookList.nextElementSibling);
+// delete books
+list.addEventListener("click", (e) => {
+  if (e.target.className == "delete") {
+    const li = e.target.parentElement;
+    li.parentNode.removeChild(li);
+  }
+});
 
-console.log("book-lsit previoius sibling is:", bookList.previousSibling);
-console.log("book-lsit previoius element sibling is:", bookList.previousElementSibling);
+// add books
+const addForm = forms["add-book"];
+addForm.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-bookList.previousElementSibling.querySelector('p').innerHTML += '<br />Too cool for everyone else';
+  // create elements
+  const value = addForm.querySelector('input[type="text"]').value;
+  const li = document.createElement("li");
+  const bookName = document.createElement("span");
+  const deleteBtn = document.createElement("span");
+
+  // add text content
+  bookName.textContent = value;
+  deleteBtn.textContent = "delete";
+
+  // add classes
+  bookName.classList.add("name");
+  deleteBtn.classList.add("delete");
+
+  // append to DOM
+  li.appendChild(bookName);
+  li.appendChild(deleteBtn);
+  list.appendChild(li);
+});
+
+// hide books
+const hideBox = document.querySelector("#hide");
+hideBox.addEventListener("change", function (e) {
+  if (hideBox.checked) {
+    list.style.display = "none";
+  } else {
+    list.style.display = "initial";
+  }
+});
